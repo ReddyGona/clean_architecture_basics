@@ -1,6 +1,10 @@
+import 'package:clean_architecture_basics/core/services/injection_container.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // calling the init() method to inject the dependencies whenever our application starts
+  await init();
   runApp(const MyApp());
 }
 
