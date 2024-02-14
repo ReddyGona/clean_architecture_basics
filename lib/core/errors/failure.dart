@@ -1,3 +1,4 @@
+import 'package:clean_architecture_basics/core/errors/exceptions.dart';
 import 'package:equatable/equatable.dart';
 // creating a abstract class for the project to return the failures to the users
 
@@ -25,4 +26,12 @@ abstract class Failure extends Equatable {
 // constructor of the Failure class
 class ApiFailure extends Failure {
   const ApiFailure({required super.message, required super.statusCode});
+
+  // creating a named constructor to get the message and status code from an
+  // api exception
+  ApiFailure.fromException(ApiException exception)
+      : this(
+          message: exception.message,
+          statusCode: exception.statusCode,
+        );
 }

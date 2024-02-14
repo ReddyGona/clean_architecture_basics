@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 // using the equatable class to easily compare the objects for the class
 // below without overriding the hashcode and operator method
 class User extends Equatable {
-  final int id;
+  final String id;
   final String createdAt;
   final String name;
   final String avatar;
@@ -26,7 +26,7 @@ class User extends Equatable {
   // NOTE: The empty constructor always have the name as empty as used below
   const User.empty()
       : this(
-          id: 1,
+          id: '1',
           createdAt: "_empty.createdAt",
           name: "_empty.name",
           avatar: "_empty.avatar",
@@ -37,5 +37,5 @@ class User extends Equatable {
   // any other field like createdAt,name and avatar are different then
   // also we will consider the objects as same objects.
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [id, name, avatar, createdAt];
 }

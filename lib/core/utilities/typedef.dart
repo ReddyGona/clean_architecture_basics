@@ -9,3 +9,6 @@ typedef ResultFuture<T> = Future<Either<Failure, T>>;
 
 // creating a type to either return Failure or void
 typedef ResultVoid = ResultFuture<void>;
+
+// creating a type for Map<String,dynamic>
+typedef DataMap = Map<String, dynamic>;
