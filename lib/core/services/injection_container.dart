@@ -6,7 +6,7 @@ import 'package:clean_architecture_basics/src/authentication/data/repositoryImpl
 import 'package:clean_architecture_basics/src/authentication/domain/repositories/authentication_repository.dart';
 import 'package:clean_architecture_basics/src/authentication/domain/usecases/create_user.dart';
 import 'package:clean_architecture_basics/src/authentication/domain/usecases/get_users.dart';
-import 'package:clean_architecture_basics/src/authentication/presentation/cubit/authentication_cubit.dart';
+import 'package:clean_architecture_basics/src/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
@@ -38,7 +38,9 @@ Future<void> init() async {
   // Dependency for application logic
   sl
     ..registerFactory(
-        () => AuthenticationCubit(createUser: sl(), getUsers: sl()))
+        // since AuthenticationBloc and AuthenticationCubit both have same implementation
+        // so here we can use either AuthenticationBloc or AuthenticationCubit
+        () => AuthenticationBloc(createUser: sl(), getUsers: sl()))
     // Dependencies for Use cases
     ..registerLazySingleton(() => CreateUser(sl()))
     ..registerLazySingleton(() => GetUsers(sl()))
